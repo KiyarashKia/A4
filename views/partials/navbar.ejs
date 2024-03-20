@@ -16,10 +16,9 @@
               Themes
             </summary>
             <ul class="p-2 bg-base-100 rounded-t-none">
-              <li><a href="/lego/sets?theme=Basic Set" class="hover:text-red-400">Basic Set</a></li>
-              <li><a href="/lego/sets?theme=Series 21 Minifigures" class="hover:text-red-400">21 Minifigures</a></li>
-              <li><a href="/lego/sets?theme=Looney Tunes" class="hover:text-red-400">Looney Tunes</a></li>
-              
+              <li><a class="<%= (page == "/lego/sets") ? 'active' : '' %>" href="/lego/sets?theme=Basic Set">Basic Set</a></li>
+              <li><a class="<%= (page == "/lego/sets") ? 'active' : '' %>" href="/lego/sets?theme=Series 21 Minifigures">21 Mini Figures</a></li>
+              <li><a class="<%= (page == "/lego/sets") ? 'active' : '' %>" href="/lego/sets?theme=Looney Tunes">Looney Tunes</a></li>
             </ul>
           </details>
         </li>
