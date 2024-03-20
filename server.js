@@ -15,7 +15,7 @@
 
 const { log } = require("console");
 const legoData = require("./modules/legoSets");
-
+const theThemes = ["Basic Set", "21 Mini figures", "Looney Tunes"];
 legoData.initialize();
 
 const express = require('express');
@@ -41,21 +41,21 @@ app.get('/lego/sets', (req, res) => {
     if (req.query.theme){
       legoData.getSetsByTheme(req.query.theme)
       .then(themeSets => {
-        res.send(themeSets);
+        res.render('sets', {legoSets: themeSets, currentTheme: req.query.theme, theThemes: theThemes});
       })
       .catch(error => {
           console.error(error);
-          res.status(404).sendFile(path.join(__dirname, '/views/404.html'));
+          res.status(404).render('404', {message: "No Sets found for a matching theme"});
       });
     }
     else {
       legoData.getAllSets()
       .then(sets => {
-          res.send(sets);
+        res.render('sets', {legoSets: sets, currentTheme: "", theThemes: theThemes});
       })
       .catch(error => {
           console.error(error);
-          res.status(404).sendFile(path.join(__dirname, '/views/404.html'));
+          res.status(404).render('404', {message: "No Sets found"});
       });
     }
   });
@@ -63,16 +63,16 @@ app.get('/lego/sets', (req, res) => {
 app.get('/lego/sets/:set_num', (req, res) => {
     legoData.getSetByNum(req.params.set_num)
     .then(set => {
-      res.send(set);
+      res.render('set', {legoSet: set});
     })
     .catch(error => {
         console.error(error);
-        res.status(404).sendFile(path.join(__dirname, '/views/404.html'));
+        res.status(404).render('404', {message: "No Sets found for a set num"});
     });
   });
 
   app.all('*', (req, res) => { 
-    res.status(404).sendFile(path.join(__dirname, '/views/404.html')); 
+    res.status(404).render('404', {message: "No view matched for the route"});
   }); 
 
   app.listen(HTTP_PORT, () => console.log(`server listening on: ${HTTP_PORT}`));
