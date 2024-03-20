@@ -25,7 +25,7 @@ const HTTP_PORT = process.env.PORT || 4050;
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '/views/about.html'));
+  res.sendFile(path.join(__dirname, '/views/home.html'));
     //res.render("home");
   });
 
