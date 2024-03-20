@@ -16,7 +16,7 @@
             <p>Click the theme to filter by themes such as: </p><br>
             
             <div> 
-                <% availableThemes.forEach(theme => { %>
+                <% theThemes.forEach(theme => { %>
                     <a class="btn btn-secondary btn-xs <%= (currentTheme === theme) ? 'cursor-not-allowed opacity-75 pointer-events-none' : '' %>" href="/lego/sets?theme=<%= theme %>"><%= theme %></a>
                 <% }); %>
             </div>    
