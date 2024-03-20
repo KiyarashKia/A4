@@ -9,48 +9,78 @@
 <body>
     <%- include('partials/navbar', {page: `/sets${currentTheme ? ('/' + currentTheme) : ''}`}) %>
 
-    <!-- Hero section with dynamic background image based on the set's image -->
-    <section class="hero" style="background-image: url('<%= legoSet.img_url %>'); background-size: cover; background-position: center; height: 400px;">
-        <div class="hero-content text-center text-neutral-content">
-            <div class="max-w-md">
-                <h1 class="mb-5 text-5xl font-bold"><%= legoSet.name %></h1>
-                <p class="mb-5">Below, you will find detailed information about the set: <%= legoSet.name %>.</p>
+    <section class="shadow-lg bg-primary-gray-custom text-black mx-auto rounded-lg flex flex-col items-center justify-center" style="background-image: url('/media/Lego hero.jpg'); background-size: 100%; background-repeat: no-repeat; background-position: right 80%; max-width: 90%; width: 80%; height: 400px; margin-bottom: 20px; margin-top: 20px;">
+        <div class="container mx-auto flex items-center justify-center flex-col relative top-6">
+            <h1 class="text-4xl font-bold mb-4">Collection</h1>
+            <p>Browse the entire collection</p>
+            <p>Click the theme to filter by themes such as: </p><br>
+            
+            <div> 
+                <% theThemes.forEach(theme => { %>
+                    <a class="btn btn-secondary btn-xs <%= (currentTheme === theme) ? 'cursor-not-allowed opacity-75 pointer-events-none' : '' %>" href="/lego/sets?theme=<%= theme %>"><%= theme %></a>
+                <% }); %>
+            </div>    
+        <div class="hero">
+            <div class="hero-content text-center">
+                <div>
+                    <table class="table">
+                        <!-- head -->
+                        <thead>
+                            <tr>
+                                <th>Set Number</th>
+                                <th>Name</th>
+                                <th>Year</th>
+                                <th>Number of Parts</th>
+                                <th>Theme</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- rows -->
+                            <% legoSets.forEach(set => { %>
+                            <tr class="even:bg-transparent odd:bg-zinc-50 rounded-lg">
+                                <td><%= set.set_num %></td>
+                                <td>
+                                    <div class="flex items-center gap-3">
+                                        <div class="avatar">
+                                            <div class="mask mask-squircle w-12 h-12">
+                                                <img src="<%= set.img_url %>" alt="Avatar" onerror="this.src='/image/Image_not_available.png'; this.onerror=null;"/>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="font-bold"><%= set.name %></div>
+                                            <div class="text-sm opacity-50"><%= set.year %></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><%= set.year %></td>
+                                <td><%= set.num_parts %></td>
+                                <td>
+                                    <a class="btn btn-ghost btn-xs" href="/lego/sets?theme=<%= set.theme %>"><%= set.theme %></a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-ghost btn-xs" href="/lego/sets/<%= set.set_num %>">Details</a>
+                                </td>
+                            </tr>
+                            <% }); %>
+                        </tbody>
+                        <!-- foot -->
+                        <tfoot>
+                            <tr>
+                                <th>Set Number</th>
+                                <th>Name</th>
+                                <th>Year</th>
+                                <th>Number of Parts</th>
+                                <th>Theme</th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </div>
         </div>
     </section>
 
-    <div class="container mx-auto mt-10">
-        <!-- Details of the set -->
-        <div class="card bg-base-100 shadow-xl">
-            <figure><img src="<%= legoSet.img_url %>" alt="<%= legoSet.name %>" onerror="this.src='/image/Image_not_available.png';"></figure>
-            <div class="card-body">
-                <h2 class="card-title"><%= legoSet.name %></h2>
-                <p>Year Released: <%= legoSet.year %></p>
-                <p>Theme: <%= legoSet.theme %></p>
-                <p>Number of Parts: <%= legoSet.num_parts %></p>
-                <div id="quoteContainer">
-                    <!-- Quote will be fetched and displayed here -->
-                </div>
-                <div class="card-actions justify-end">
-                    <a href="#" onclick="history.back(); return false;" class="btn btn-primary">Back</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            fetch('https://quotable.io/random')
-                .then(response => response.json())
-                .then(data => {
-                    const quoteContainer = document.getElementById('quoteContainer');
-                    quoteContainer.innerHTML = `<blockquote>"${data.content}" - ${data.author}</blockquote>`;
-                })
-                .catch(error => {
-                    console.error('Error fetching the quote:', error);
-                });
-        });
-    </script>
-
     <script src="/ThemeChanger.js"></script>
 </body>
+</html>
