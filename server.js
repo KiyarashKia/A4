@@ -1,15 +1,17 @@
 /********************************************************************************
-*  WEB322 – Assignment 03
+*  WEB322 – Assignment 04
 * 
 *  I declare that this assignment is my own work in accordance with Seneca's
 *  Academic Integrity Policy:
 * 
 *  https://www.senecacollege.ca/about/policies/academic-integrity-policy.html
 * 
-*  Name: Kiarash Kia Student ID: 108688235 Date: 02/21/2024
+*  Name: Kiarash Kia Student ID: 108688235 Date: 03/20/2024
 
-*  Published URL: https://muddy-sunbonnet-seal.cyclic.app
+*  Published URL: https://determined-rose-skunk.cyclic.app/
 ********************************************************************************/
+
+// https://t.ly/s8wxY
 
 const { log } = require("console");
 const legoData = require("./modules/legoSets");
@@ -17,7 +19,6 @@ const legoData = require("./modules/legoSets");
 legoData.initialize();
 
 const express = require('express');
-const path = require('path');
 const app = express();
 app.set('view engine', 'ejs');
 const HTTP_PORT = process.env.PORT || 4050;
@@ -25,12 +26,13 @@ const HTTP_PORT = process.env.PORT || 4050;
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '/views/home.html'));
-    //res.render("home");
+  //res.sendFile(path.join(__dirname, '/views/home.html'));
+  res.render('home');
   });
 
   app.get('/about', (req, res) => {
-    res.sendFile(path.join(__dirname, '/views/about.html'));
+    //res.sendFile(path.join(__dirname, '/views/about.html'));
+    res.render('about');
   });
 
 app.get('/lego/sets', (req, res) => {
