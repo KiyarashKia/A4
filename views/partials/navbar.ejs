@@ -17,28 +17,28 @@
 </div>
 
 
-<script>
+<script src="/ThemeChanger.js">
     // Just to keep the theme state across pages
-    document.addEventListener("DOMContentLoaded", () => {
-        const themeToggle = document.getElementById('theme-toggle');
-        const currentTheme = localStorage.getItem('theme');
+    document.addEventListener('DOMContentLoaded', () => {
+  const themeToggle = document.getElementById('theme-toggle');
+  const currentTheme = localStorage.getItem('theme');
 
-        if (currentTheme === 'dark') {
-            document.documentElement.classList.add('dark');
-            themeToggle.checked = true;
-        } else {
-            document.documentElement.classList.remove('dark');
-            themeToggle.checked = false;
-        }
+  if (currentTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+      themeToggle.checked = true;
+  } else {
+      document.documentElement.classList.remove('dark');
+      themeToggle.checked = false;
+  }
 
-        themeToggle.addEventListener('change', function() {
-            if (this.checked) {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-            }
-        });
-    });
+  themeToggle.addEventListener('change', function() {
+      if (this.checked) {
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('theme', 'dark');
+      } else {
+          document.documentElement.classList.remove('dark');
+          localStorage.setItem('theme', 'light');
+      }
+  });
+});
 </script>
