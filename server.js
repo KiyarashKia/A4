@@ -15,7 +15,7 @@
 
 const { log } = require("console");
 const legoData = require("./modules/legoSets");
-const theThemes = ["Basic Set", "Series 21 Mini figures", "Looney Tunes"];
+const theThemes = ["Basic Set", "Series 21 Minifigures", "Looney Tunes"];
 legoData.initialize();
 
 const express = require('express');
