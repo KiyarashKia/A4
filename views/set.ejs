@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= legoSet.name %> - Lego Set Details</title>
+    <link rel="stylesheet" href="/css/main.css"/>
+</head>
+<body>
+  <%- include('partials/navbar', {page: ''}) %>
+
+    <section class="shadow-lg bg-primary-gray-custom text-black mx-auto rounded-lg flex flex-col items-center justify-center" style="background-image: url('<%= legoSet.img_url %>'); background-size: cover; background-position: center center; max-width: 90%; width: 80%; height: 400px; margin-bottom: 20px; margin-top: 20px;">
+        <h1 class="text-4xl font-bold mb-4"><%= legoSet.name %></h1>
+        <p>Detailed information about this set</p>
+    </section>
+
+    <div class="container mx-auto flex items-center justify-center flex-col w-2/3 pt-5 pb-5">
+        <div class="bg-white shadow-lg rounded-lg p-6">
+            <div class="text-lg">
+                <p>Set Number: <%= legoSet.set_num %></p>
+                <p>Year: <%= legoSet.year %></p>
+                <p>Number of Parts: <%= legoSet.num_parts %></p>
+                <p>Theme: <%= legoSet.theme %></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/ThemeChanger.js"></script>
+</body>
+</html>
