@@ -1783,20 +1783,12 @@ html {
   pointer-events: none;
 }
 
-.relative {
-  position: relative;
-}
-
 .sticky {
   position: sticky;
 }
 
 .top-0 {
   top: 0px;
-}
-
-.top-6 {
-  top: 1.5rem;
 }
 
 .z-50 {
