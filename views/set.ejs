@@ -18,12 +18,12 @@
     </div>
 </section>
 
-    <div class="container mx-auto p-6" style="max-width: 90%; width: 80%;">
-        <div class="bg-white shadow-lg rounded-lg flex items-center p-6 mb-6">
-            <div class="w-full md:w-1/3">
-                <img src="<%= legoSet.img_url %>" alt="<%= legoSet.name %>" class="rounded-lg" style="max-width: 100%; height: auto;" onerror="this.src='/image/Image_not_available.png';">
-            </div>
-            <div class="w-full md:w-2/3 text-lg px-6">
+<div class="container mx-auto p-6" style="max-width: 90%; width: 80%;">
+    <div class="bg-white shadow-lg rounded-lg flex flex-col md:flex-row items-center p-6 mb-6">
+        <div class="md:w-1/3 p-4">
+            <img src="<%= legoSet.img_url %>" alt="<%= legoSet.name %>" class="rounded-lg" style="max-width: 100%; height: auto;" onerror="this.src='/image/Image_not_available.png';">
+        </div>
+        <div class="md:w-2/3 text-lg px-6">
                 <p><strong>Set Name:</strong> <%= legoSet.name %></p>
                 <p><strong>Year Released:</strong> <%= legoSet.year %></p>
                 <p><strong>Theme:</strong> <%= legoSet.theme %></p>
