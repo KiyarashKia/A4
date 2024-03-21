@@ -2145,6 +2145,10 @@ html {
   font-weight: 500;
 }
 
+.italic {
+  font-style: italic;
+}
+
 .leading-none {
   line-height: 1;
 }

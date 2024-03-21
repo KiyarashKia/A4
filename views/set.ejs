@@ -39,7 +39,7 @@
                 .then(response => response.json())
                 .then(data => {
                     const quoteContainer = document.getElementById('quote');
-                    quoteContainer.innerHTML = `<p style="font-size: smaller;">"${data.content}"<br><span style="font-style: normal;">- ${data.author}</span></p>`;})
+                    quoteContainer.innerHTML = `<p style="font-size: smaller;">"${data.content}"<br><span style="font-style: normal; font-size: smaller;">- </span><span style="font-style: italic;">${data.author}</span></p>`;})
                 .catch(error => {
                     console.error('Error fetching the quote:', error);
                 });
