@@ -9,18 +9,21 @@
 <body>
   <%- include('partials/navbar', {page: ''}) %>
 
-    <section class="shadow-lg bg-primary-gray-custom text-black mx-auto rounded-lg flex flex-col items-center justify-center" style="background-image: url('<%= legoSet.img_url %>'); background-size: cover; background-position: center center; max-width: 90%; width: 80%; height: 400px; margin-bottom: 20px; margin-top: 20px;">
+    <section class="shadow-lg bg-primary-gray-custom text-black mx-auto rounded-lg flex flex-col items-center justify-center" style="background-image: url('/media/Lego hero.jpg'); background-size: 100%; background-repeat: no-repeat; background-position: right 80%; max-width: 90%; width: 80%; height: 400px; margin-bottom: 20px; margin-top: 20px;">
         <h1 class="text-4xl font-bold mb-4"><%= legoSet.name %></h1>
         <p>Detailed information about this set</p>
     </section>
 
-    <div class="container mx-auto flex items-center justify-center flex-col w-2/3 pt-5 pb-5">
-        <div class="bg-white shadow-lg rounded-lg p-6">
-            <div class="text-lg">
-                <p>Set Number: <%= legoSet.set_num %></p>
-                <p>Year: <%= legoSet.year %></p>
-                <p>Number of Parts: <%= legoSet.num_parts %></p>
-                <p>Theme: <%= legoSet.theme %></p>
+    <div class="container mx-auto p-6" style="max-width: 90%; width: 80%;">
+        <div class="bg-white shadow-lg rounded-lg flex items-center p-6">
+            <div class="w-full md:w-1/2">
+                <img src="<%= legoSet.img_url %>" alt="<%= legoSet.name %>" class="rounded-lg shadow-md" onerror="this.src='/image/Image_not_available.png';">
+            </div>
+            <div class="w-full md:w-1/2 text-lg px-6">
+                <p><strong>Set Number:</strong> <%= legoSet.set_num %></p>
+                <p><strong>Year:</strong> <%= legoSet.year %></p>
+                <p><strong>Number of Parts:</strong> <%= legoSet.num_parts %></p>
+                <p><strong>Theme:</strong> <%= legoSet.theme %></p>
             </div>
         </div>
     </div>
